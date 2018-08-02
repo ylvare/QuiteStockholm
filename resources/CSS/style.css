@@ -5,9 +5,6 @@ body {
   font-size: 16px;
   font-family: sans-serif;
   color: #37474F;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
 }
 
 .image-container {
@@ -26,20 +23,15 @@ body {
   display: none;
 }
 
-.desctop {
-  display: block;
-}
-
-
 /*header*/
+
 header {
-  flex-grow: 1;
   position: fixed;
-  width: 95%;
+  z-index: 1;
+  width: 100%;
   padding-top: 2rem;
   padding-bottom: 4rem;
   display: flex;
-  align-items: center;
   background: linear-gradient(to bottom, white 50%, transparent 90%);
 }
 
@@ -55,12 +47,14 @@ header h1 {
 }
 
 .logo{
+  padding-left: 1rem;
   align-items: center;
   height: 2rem;
   flex-grow: 1;
 }
 
-nav {
+.navigation {
+  padding-right:2rem;
   display: flex;
   align-items: center;
 }
@@ -85,11 +79,11 @@ nav {
 /* list of places*/
 
 .PlacesList {
-  padding-top: 0.5rem;
+  padding-top: 4.5rem;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  margin: 4.4rem 10%;
+  /*margin: 4.4rem 10%;*/
 }
 
 /*a place*/
