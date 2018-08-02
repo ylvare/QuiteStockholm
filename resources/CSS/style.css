@@ -1,7 +1,100 @@
 .ReviewForm {
-  padding-top: 7rem;
-  padding-left: 10rem;
+  display: flex;
+  justify-content: center;
+  background-color: #4DB6AC;
+  width: 100%;
 }
+
+.Border {
+  background-color: white;
+  margin-top: 15rem;
+  margin-bottom: 15rem;
+  display: flex;
+  justify-content: center;
+  border-radius: 1.75rem;
+}
+
+/*.color1 {
+  color: #4DB6AC;
+}
+.color2 {
+  color: #009688;
+
+  background-color:  #009688;
+  color: #004D40;
+
+}*/
+
+form {
+  /* Just to center the form on the page */
+  background-color: white;
+  margin: 1rem;
+  width: 100%;
+  /* To see the outline of the form */
+  padding: 5rem 1rem 2.5rem 1rem;
+  /*border: 1px solid #CCC;*/
+  border: 1px solid rgba(77,182,172,0.3);
+  border-radius: 1rem;
+  font-family : inherit;
+}
+
+form div{
+  margin-top: 0.5rem;
+}
+
+label {
+  /* To make sure that all labels have the same size and are properly aligned */
+  display: inline-block;
+  width: 5rem;
+  text-align: right;
+  /*vertical-align: text-bottom;*/
+  color: #009688;
+  font-weight: 549;
+  font-size: .88rem;
+  line-height: 1rem;
+  padding-right: 0.3rem;
+}
+
+input, select {
+  /* To make sure that all text fields have the same font settings
+     By default, textareas have a monospace font */
+  /* To give the same size to all text fields */
+  width: 20rem;
+  box-sizing: border-box;
+
+  /* To harmonize the look & feel of text field border */
+  border: 1px solid #CCC;
+}
+
+input:focus, select:focus {
+  /* To give a little highlight on active elements */
+  /*border-color: #37474F;*/
+  outline: 2px solid rgba(204,204,204,0.5);
+}
+
+.rate-container {
+  display: inline-block;
+}
+.rate-container > i {
+    float: right;
+}
+
+.rate-container > i:HOVER,
+.rate-container > i:HOVER ~ i {
+    color: gold;
+}
+
+.button {
+  /* To position the buttons to the same position of the text fields */
+  padding-left: 90px; /* same size as the label elements */
+}
+
+button {
+  /* This extra margin represent roughly the same space as the space
+     between the labels and their text fields */
+  margin-left: .5em;
+}
+
 
 
 
@@ -88,7 +181,6 @@ header h1 {
 .PlacesList {
   padding-top: 5rem;
   display: flex;
-  /*display: flex;*/
   justify-content: space-around;
   flex-wrap: wrap;
 }
