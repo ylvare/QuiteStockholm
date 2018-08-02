@@ -1,0 +1,154 @@
+/*general styles*/
+
+body {
+  background-color: white;
+  font-size: 16px;
+  font-family: sans-serif;
+  color: #37474F;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+}
+
+.image-container img {
+  height: 100%;
+}
+
+.mobile {
+  display: none;
+}
+
+.desctop {
+  display: block;
+}
+
+
+/*header*/
+header {
+  flex-grow: 1;
+  position: fixed;
+  width: 95%;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to bottom, white 50%, transparent 90%);
+}
+
+header h1 {
+  font-size: 1.5rem;
+}
+
+.color1 {
+  color: #4DB6AC;
+}
+.color2 {
+  color: #009688;
+}
+
+.logo{
+  align-items: center;
+  height: 2rem;
+  flex-grow: 1;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (max-width: 800px) {
+
+  .desctop {
+    display:none;
+  }
+
+  .mobile {
+    display: block;
+  }
+
+  .logo {
+    height: 4rem;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+/* list of places*/
+
+.PlacesList {
+  padding-top: 0.5rem;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 4.4rem 10%;
+}
+
+/*a place*/
+
+.Place {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 20rem;
+  margin: 0 .5rem 2.3rem .5rem;
+  background-color:  #009688;
+  color: #004D40;
+
+}
+
+.Place .image-container {
+  height: 16.66rem;
+  margin-bottom: 1rem;
+}
+
+.Place .text-container {
+  padding: 0.4rem;
+}
+
+.Place h2 {
+  margin-bottom: .5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.Place-information {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Place-information p {
+  font-size: .88rem;
+  font-weight: 300;
+  line-height: 1rem;
+}
+
+.Place-address {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Place-reviews {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: right;
+  color: #E0F2F1;
+  /*color: #CCFF90;*/
+  font-weight: 400;
+  font-size: .88rem;
+  line-height: 1rem;
+}
+
+.rating {
+    font-weight: 600;
+}
