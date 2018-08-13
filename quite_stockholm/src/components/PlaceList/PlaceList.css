@@ -1,0 +1,7 @@
+.PlacesList {
+  width:100%;
+  padding-top: 5rem;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}

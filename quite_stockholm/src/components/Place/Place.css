@@ -1,0 +1,57 @@
+.Place {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 20rem;
+  margin: 0 .5rem 2.3rem .5rem;
+  background-color:  #009688;
+  color: #004D40;
+
+}
+
+.Place .image-container {
+  height: 16.66rem;
+  margin-bottom: 1rem;
+}
+
+.Place .text-container {
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  padding-bottom: 0.6rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Place .text-container p {
+  font-size: .88rem;
+  font-weight: 300;
+  /*line-height: 1rem;*/
+}
+
+.Place h2 {
+  margin-bottom: .3rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.Place-address {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Place-reviews {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: right;
+  color:gold;
+  /*color: #E0F2F1;*/
+  font-weight: 400;
+  font-size: .88rem;
+  line-height: 1rem;
+}
+
+.rating {
+    font-weight: 600;
+}
