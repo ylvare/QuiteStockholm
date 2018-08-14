@@ -9,7 +9,7 @@ class PlaceForm extends Component {
             <div className="Border">
             <form action="/my-handling-form-page" method="post">
               <div>
-                <label for="category">Kategori</label>
+                <label htmlFor="category">Kategori</label>
                 <select id="category">
                     <option value=""></option>
                     <option value="work">Läsa/Skriva</option>
@@ -20,16 +20,16 @@ class PlaceForm extends Component {
                 </select>
               </div>
               <div>
-                <label for="place">Plats</label>
+                <label htmlFor="place">Plats</label>
                 <input type="text" id="plats" name="place"/>
               </div>
 
               <div>
-                <label for="address">Adress</label>
+                <label htmlFor="address">Adress</label>
                 <input type="text" id="address" name="address"/>
               </div>
               <div>
-                <label for="photo">Fotografi</label>
+                <label htmlFor="photo">Fotografi</label>
                 <input type="file" name="pic" accept="image/*"/>
               </div>
               <div className="button">
