@@ -3,6 +3,17 @@
     "rules": "database.rules.json"
   },
   "hosting": {
+    "headers": [
+      {
+        "source": "/service-worker.js",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
+      }
+    ],
     "public": "build",
     "ignore": [
       "firebase.json",
@@ -18,5 +29,9 @@
   },
   "storage": {
     "rules": "storage.rules"
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
   }
 }

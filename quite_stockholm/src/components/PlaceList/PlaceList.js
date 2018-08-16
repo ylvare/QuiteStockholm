@@ -8,7 +8,7 @@ class PlaceList extends Component {
     return (
       <div className="PlaceList">
           {this.props.placeList.map(place=>{
-          return <Place name={place.name} adress={place.adress} category = {place.category} image = {place.image}/>
+          return <Place key={place.id} place={place}/>
         })}
      </div>
 
