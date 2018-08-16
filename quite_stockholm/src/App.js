@@ -21,25 +21,11 @@ class App extends Component {
 componentDidMount = async () => {
   const placeList = await this.getPlaces()
   this.setState({
-    placeList : placeList});
+    placeList : placeList})
   }
 
   async getPlaces(){
-      const placeList = []
-      const querySnapshot = await Firebase.getPlacesList()
-       querySnapshot.forEach(function(doc) {
-           const data = doc.data()
-           const place = {
-             id: doc.id,
-             plats: data.Plats,
-             adress: data.Adress,
-             category: data.Kategori,
-             likes: data.Likes,
-             image: kb
-           }
-          placeList.push(place)
-       });
-     return placeList
+      return await Firebase.getPlacesList()
    }
 
   render() {

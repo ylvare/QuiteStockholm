@@ -1,14 +1,34 @@
 import React, { Component } from 'react';
 import '../../resources/CSS/GeneralStyles.css'
 import './Place.css';
+import Firebase from '../../Util/Firebase'
 
 class Place extends Component {
+
+  constructor(props){
+   super(props)
+
+    this.state = {
+       imageRef:''
+    }
+  this.getImageRef = this.getImageRef.bind(this)
+}
+
+  componentDidMount = async () => {
+    const imageRef = await this.getImageRef(this.props.place.image)
+    this.setState({
+      imageRef : imageRef})
+    }
+
+   async getImageRef(){
+      return await Firebase.getPhotoReference(this.props.place.image)
+  }
 
   render() {
     return (
       <div className="Place">
          <div className="image-container">
-           <img src= "https://www.kb.se/images/200.79af2634160551e354b444/1513608957727/stora-lasesalen2000x1000.jpg" alt=''/>
+           <img src={this.state.imageRef} alt=''/>
           </div>
         <div className="text-container">
           <div className="Place-address">

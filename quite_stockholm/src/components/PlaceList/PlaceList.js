@@ -4,6 +4,7 @@ import './PlaceList.css'
 import Place from '../Place/Place'
 
 class PlaceList extends Component {
+
   render() {
     return (
       <div className="PlaceList">
