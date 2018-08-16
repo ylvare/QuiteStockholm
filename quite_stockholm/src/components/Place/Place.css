@@ -6,13 +6,6 @@
   margin: 0 .5rem 2.3rem .5rem;
   background-color:  #009688;
   color: #004D40;
-
-}
-
-.Place .image-container {
-  height: 16.66rem;
-  width: 23rem;
-  margin-bottom: 1rem;
 }
 
 .Place .text-container {
@@ -26,7 +19,6 @@
 .Place .text-container p {
   font-size: .88rem;
   font-weight: 300;
-  /*line-height: 1rem;*/
 }
 
 .Place h2 {
