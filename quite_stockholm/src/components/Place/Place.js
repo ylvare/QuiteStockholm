@@ -29,7 +29,6 @@ class Place extends Component {
           backgroundColor: '#E0F2F1',
           height: "16.66rem",
           width: "23rem",
-          /*`url(${this.state.src}), url(${preloaderImage});`*/
           backgroundImage: `url(${this.state.imageRef}),url("https://vectr.com/ylvare/a3HbWklLK2.svg?width=250&height=250&select=a3HbWklLK2page0")`,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
