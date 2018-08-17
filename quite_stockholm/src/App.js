@@ -4,7 +4,6 @@ import PlaceList from './components/PlaceList/PlaceList'
 import PlaceForm from './components/PlaceForm/PlaceForm'
 import './resources/CSS/GeneralStyles.css'
 import './App.css'
-import kb from "./resources/images/kb.jpg"
 import Firebase from './Util/Firebase'
 
 class App extends Component {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../../resources/CSS/GeneralStyles.css'
 import './Place.css';
 import Firebase from '../../Util/Firebase'
+import backgroundSvg from "../../resources/images/Q.svg"
 
 class Place extends Component {
 
@@ -29,7 +30,8 @@ class Place extends Component {
           backgroundColor: '#E0F2F1',
           height: "16.66rem",
           width: "23rem",
-          backgroundImage: `url(${this.state.imageRef}),url("https://vectr.com/ylvare/a3HbWklLK2.svg?width=250&height=250&select=a3HbWklLK2page0")`,
+          backgroundImage: `url(${this.state.imageRef}),url(${backgroundSvg})`,
+          /*backgroundImage: `url(${backgroundSvg})`,*/
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
