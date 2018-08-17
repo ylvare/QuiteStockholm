@@ -1,39 +1,113 @@
 import React, { Component } from 'react'
 import '../../resources/CSS/GeneralStyles.css'
 import './PlaceForm.css'
+import Firebase from '../../Util/Firebase'
 
 class PlaceForm extends Component {
+
+  constructor(props){
+   super(props)
+
+    this.state = {
+      placeTip: {
+        Plats:'',
+        Adress:'',
+        Kategori:'choose',
+        Likes:'',
+        Foto:''
+      },
+      username: '',
+      formatting: {
+        grayedOut: {
+        color:"gray"
+       },
+       displayForm: {
+       },
+       displayGreeting: {
+         display:"none"
+       }
+      }
+    }
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+
+  handleChange(e) {
+    let placeTip = {...this.state.placeTip}
+    placeTip[e.target.name] = e.target.value
+    let formatting = {...this.state.formatting}
+    formatting['grayedOut'] = {
+      color:"black"
+    }
+    this.setState({
+    placeTip:placeTip,
+    formatting:formatting
+    });
+  }
+
+  handleSubmit(e) {
+  e.preventDefault();
+  const placeTip =  { ...this.state.placeTip}
+  Firebase.addPlaceTip(placeTip)
+  const formatting = {
+          grayedOut: {
+          color:"gray"
+         },
+         displayForm: {
+           display:"none"
+         },
+         displayGreeting: {
+         display:"block"
+      }
+    }
+
+  this.setState({
+    placeTip: {
+      Plats:'',
+      Adress:'',
+      Kategori:'choose',
+      Likes:'',
+      Foto:''
+    },
+    formatting:formatting
+  });
+  window.scrollTo(0,document.body.scrollHeight);
+}
+
   render() {
+
     return (
           <div className="PlaceForm">
-            <div className="Border">
-            <form action="/my-handling-form-page" method="post">
+            <div className="Thanks" style={this.state.formatting.displayGreeting}><p> Tack för ditt bidrag <i className="fa fa-heart"></i>  </p></div>
+            <div className="Border" style={this.state.formatting.displayForm}>
+            <form onSubmit={this.handleSubmit} style={this.state.formatting.displayForm}>
               <div>
-                <label htmlFor="category">Kategori</label>
-                <select id="category">
-                    <option value=""></option>
-                    <option value="work">Läsa/Skriva</option>
-                    <option value="fika">Fika</option>
+                <label>Kategori</label>
+                <select required name="Kategori" onChange={this.handleChange} value={this.state.placeTip.Kategori} style={this.state.formatting.grayedOut}>
+                    <option value="choose" disabled>Välj kategori</option>
+                    <option value="Läsa/Skriva">Läsa/Skriva</option>
+                    <option value="Fika">Fika</option>
                     <option value="AW">AW</option>
-                    <option value="eat">Äta</option>
-                    <option value="bathing">Bada</option>
+                    <option value="Äta">Äta</option>
+                    <option value="Bada">Bada</option>
                 </select>
               </div>
               <div>
-                <label htmlFor="place">Plats</label>
-                <input type="text" id="plats" name="place"/>
-              </div>
-
-              <div>
-                <label htmlFor="address">Adress</label>
-                <input type="text" id="address" name="address"/>
+                <label>Plats</label>
+                <input type="text" id="plats" name="Plats" placeholder="Lugna Baren" onChange={this.handleChange} value={this.state.placeTip.Plats} />
               </div>
               <div>
-                <label htmlFor="photo">Fotografi</label>
+                <label>Adress</label>
+                <input type="text" name="Adress" placeholder="Tystagatan 22" onChange={this.handleChange} value={this.state.placeTip.Adress}/>
+              </div>
+              <div>
+                <label>Fotografi</label>
                 <input type="file" name="pic" accept="image/*"/>
               </div>
               <div className="button">
-                <button type="submit">Tipsa</button>
+                <button>Tipsa</button>
               </div>
             </form>
            </div>

@@ -31,7 +31,6 @@ class Place extends Component {
           height: "16.66rem",
           width: "23rem",
           backgroundImage: `url(${this.state.imageRef}),url(${backgroundSvg})`,
-          /*backgroundImage: `url(${backgroundSvg})`,*/
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
@@ -44,7 +43,7 @@ class Place extends Component {
         <div className="text-container">
           <div className="Place-address">
             <h2>{this.props.place.plats}</h2>
-            <p>{this.props.place.category} | {this.props.place.adress} </p>
+            <p>{this.props.place.kategori} | {this.props.place.adress} </p>
           </div>
           <div className="Place-reviews">
             <h3 className="rating"> <i className="fa fa-star"></i> {this.props.place.likes} </h3>

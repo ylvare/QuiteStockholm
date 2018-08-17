@@ -19,6 +19,10 @@ const storage = firebase.storage();
 const storageRef = storage.ref();
 
 const Firebase = {
+    getUpdates :  function (){
+    return db.collection("places")
+   }
+    ,
     getPlacesList: async function(){
     const placeList = []
      return db.collection("places").get().then(async function(querySnapshot) {
@@ -28,7 +32,7 @@ const Firebase = {
              id: doc.id,
              plats: data.Plats,
              adress: data.Adress,
-             category: data.Kategori,
+             kategori: data.Kategori,
              likes: data.Likes,
              image: data.Foto
            }
@@ -39,10 +43,20 @@ const Firebase = {
 
   },
   getPhotoReference: async function(photoName){
-
     return await storageRef.child(`images/${photoName}`).getDownloadURL()
+  },
+  addPlaceTip: function(placeTip){
+
+    db.collection("places").add(
+       placeTip
+    )
+    .then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
   }
 }
-
 
 export default Firebase
