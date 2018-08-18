@@ -19,9 +19,9 @@ const storage = firebase.storage();
 const storageRef = storage.ref();
 
 const Firebase = {
-    getUpdates :  function (){
-    return db.collection("places")
-   }
+    getPlacesRef :  function (){
+     return db.collection("places")
+    }
     ,
     getPlacesList: async function(){
     const placeList = []
@@ -45,8 +45,8 @@ const Firebase = {
   getPhotoReference: async function(photoName){
     return await storageRef.child(`images/${photoName}`).getDownloadURL()
   },
-  addPlaceTip: function(placeTip){
 
+  addPlaceTip: function(placeTip){
     db.collection("places").add(
        placeTip
     )

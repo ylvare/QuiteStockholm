@@ -12,8 +12,7 @@ class App extends Component {
    super(props)
 
     this.state = {
-       placeList:[],
-       test: "test"
+       placeList:[]
     }
 
   this.getPlaces = this.getPlaces.bind(this)
@@ -22,17 +21,12 @@ class App extends Component {
 
   componentDidMount = async () => {
   const that = this;
-  const refPlaces = Firebase.getUpdates()
-
+  const refPlaces = Firebase.getPlacesRef()
   refPlaces.onSnapshot(async function (querySnapshot) {
          const placeList = await that.getPlaces()
          that.setState({
            placeList : placeList})
         })
-
-    const placeList = await this.getPlaces()
-    this.setState({
-      placeList : placeList})
   }
 
   async getPlaces(){

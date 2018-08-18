@@ -16,17 +16,16 @@ class PlaceForm extends Component {
         Likes:'',
         Foto:''
       },
-      username: '',
       formatting: {
-        grayedOut: {
-        color:"gray"
-       },
-       displayForm: {
-       },
-       displayGreeting: {
-         display:"none"
+              grayedOut: {
+              color:"gray"
+             },
+             displayForm: {
+             },
+             displayGreeting: {
+               display:"none"
+          }
        }
-      }
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -60,7 +59,7 @@ class PlaceForm extends Component {
          },
          displayGreeting: {
          display:"block"
-      }
+       }
     }
 
   this.setState({
@@ -112,8 +111,8 @@ class PlaceForm extends Component {
             </form>
            </div>
           </div>
-    );
-  }
+        );
+    }
 }
 
 export default PlaceForm;
