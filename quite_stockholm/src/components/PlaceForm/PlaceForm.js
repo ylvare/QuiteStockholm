@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import '../../resources/CSS/GeneralStyles.css'
 import './PlaceForm.css'
 import Firebase from '../../Util/Firebase'
+import {placeTipClean, formattingPlaceFormClean} from '../../constants/app_secrets'
 
 class PlaceForm extends Component {
 
@@ -9,29 +10,18 @@ class PlaceForm extends Component {
    super(props)
 
     this.state = {
-      placeTip: {
-        Plats:'',
-        Adress:'',
-        Kategori:'choose',
-        Likes:'',
-        Foto:''
-      },
-      formatting: {
-              grayedOut: {
-              color:"gray"
-             },
-             displayForm: {
-             },
-             displayGreeting: {
-               display:"none"
-          }
-       }
-    }
+      placeTip: placeTipClean,
+      formatting: formattingPlaceFormClean
+      }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+
+  scrollToBottom() {
+      window.scrollTo(0, document.body.scrollHeight);
+  }
 
   handleChange(e) {
     let placeTip = {...this.state.placeTip}
@@ -50,29 +40,19 @@ class PlaceForm extends Component {
   e.preventDefault();
   const placeTip =  { ...this.state.placeTip}
   Firebase.addPlaceTip(placeTip)
-  const formatting = {
-          grayedOut: {
-          color:"gray"
-         },
-         displayForm: {
-           display:"none"
-         },
-         displayGreeting: {
-         display:"block"
-       }
-    }
+  let formatting =  { ...formattingPlaceFormClean}
+  formatting['displayForm'] = {
+     display:"none"
+  }
+  formatting['displayGreeting'] = {
+     display:"block"
+  }
 
   this.setState({
-    placeTip: {
-      Plats:'',
-      Adress:'',
-      Kategori:'choose',
-      Likes:'',
-      Foto:''
-    },
+    placeTip: placeTipClean,
     formatting:formatting
   });
-  window.scrollTo(0,document.body.scrollHeight);
+  setTimeout(this.scrollToBottom(), 1000);
 }
 
   render() {

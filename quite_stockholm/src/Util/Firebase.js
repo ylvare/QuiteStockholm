@@ -1,7 +1,7 @@
 import firebase from 'firebase';
 /*import * as firebase from 'firebase/app';*/
 import 'firebase/firestore'
-import fireBaseConfig from '../constants/app_secrets'
+import {fireBaseConfig} from '../constants/app_secrets'
 
 firebase.initializeApp({
   apiKey: fireBaseConfig.apiKey,
