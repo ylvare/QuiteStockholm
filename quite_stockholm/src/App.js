@@ -19,32 +19,30 @@ class App extends Component {
 }
 
 
-  componentDidMount = async () => {
-  const placeList = await this.getPlaces()
-  this.setState({
-      placeList : placeList
-    })
-  }
+   componentDidMount = async () => {
+
+    const that = this;
+    const refPlaces = Firebase.getPlacesRef()
+    refPlaces.onSnapshot(async function (querySnapshot) {
+           const placeList = await that.getPlaces()
+           that.setState({
+             placeList : placeList})
+           })
+    }
 
   async getPlaces(){
       return await Firebase.getPlacesList()
    }
 
   addPlaceTip(place,file){
-    const that = this;
-    const firebase = Firebase.getFirebase()
-    Firebase.addPlaceTip(place)
     const uploadTask = Firebase.addPhotoFile(file)
-    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
-      function(snapshot) {
-      }, function(error) {
-     }, async function() {
-         const placeList = await that.getPlaces()
-            that.setState({
-             placeList : placeList
-           })
-        })
-    }
+    uploadTask.on('state_changed', function(snapshot){
+        }, function(error) {
+          // Handle unsuccessful uploads
+        }, async function() {
+            Firebase.addPlaceTip(place)
+     })
+  }
 
   render() {
     return (

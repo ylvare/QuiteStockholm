@@ -65,7 +65,7 @@ const Firebase = {
   },
 
   addPhotoFile: function(file){
-    const metadata = {contentType: file.type }
+    const metadata = {"contentType": file.type }
     const uploadTask = storageRef.child('images/' + file.name.toLowerCase()).put(file, metadata);
     return uploadTask
   }
