@@ -8,11 +8,11 @@ messagingSenderId: "28553682858"
 };
 
 export const placeTipClean = {
-  Plats:'',
-  Adress:'',
-  Kategori:'choose',
-  Likes:'',
-  Foto:''
+      Plats:'',
+      Adress:'',
+      Kategori:'choose',
+      Likes:'',
+      Foto:''
 }
 
 export const formattingPlaceFormClean = {

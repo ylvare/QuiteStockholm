@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import '../../resources/CSS/GeneralStyles.css'
 import './PlaceForm.css'
-import Firebase from '../../Util/Firebase'
-import {placeTipClean, formattingPlaceFormClean} from '../../constants/app_secrets'
+import {placeTipClean, formattingPlaceFormClean} from '../../constants/constants'
 
 class PlaceForm extends Component {
 
@@ -11,11 +10,13 @@ class PlaceForm extends Component {
 
     this.state = {
       placeTip: placeTipClean,
+      selectedFile: null,
       formatting: formattingPlaceFormClean
       }
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this)
+    this.handleChangePhoto = this.handleChangePhoto.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
 
@@ -36,27 +37,34 @@ class PlaceForm extends Component {
     });
   }
 
-  handleSubmit(e) {
-  e.preventDefault();
-  const placeTip =  { ...this.state.placeTip}
-  Firebase.addPlaceTip(placeTip)
-  let formatting =  { ...formattingPlaceFormClean}
-  formatting['displayForm'] = {
-     display:"none"
-  }
-  formatting['displayGreeting'] = {
-     display:"block"
-  }
+   handleChangePhoto(e){
+     let placeTip = {...this.state.placeTip}
+     placeTip['Foto'] = e.target.files[0].name.toLowerCase()
+     this.setState({
+     placeTip:placeTip,
+     selectedFile: e.target.files[0]
+     })
+   }
 
-  this.setState({
-    placeTip: placeTipClean,
-    formatting:formatting
-  });
-  setTimeout(this.scrollToBottom(), 1000);
+
+  handleSubmit(e) {
+    e.preventDefault()
+    this.props.addPlaceTip(this.state.placeTip, this.state.selectedFile)
+    let formatting =  { ...formattingPlaceFormClean}
+    formatting['displayForm'] = {
+       display:"none"
+    }
+    formatting['displayGreeting'] = {
+       display:"block"
+    }
+    this.setState({
+      placeTip: placeTipClean,
+      formatting:formatting
+    });
+    setTimeout(this.scrollToBottom(), 1000);
 }
 
   render() {
-
     return (
           <div className="PlaceForm">
             <div className="Thanks" style={this.state.formatting.displayGreeting}><p> Tack för ditt bidrag <i className="fa fa-heart"></i>  </p></div>
@@ -74,7 +82,7 @@ class PlaceForm extends Component {
                 </select>
               </div>
               <div>
-                <label>Plats</label>
+                <label>Namn</label>
                 <input type="text" id="plats" name="Plats" placeholder="Lugna Baren" onChange={this.handleChange} value={this.state.placeTip.Plats} />
               </div>
               <div>
@@ -83,7 +91,7 @@ class PlaceForm extends Component {
               </div>
               <div>
                 <label>Fotografi</label>
-                <input type="file" name="pic" accept="image/*"/>
+                <input type="file" name="pic" accept="image/*" onChange={this.handleChangePhoto} />
               </div>
               <div className="button">
                 <button>Tipsa</button>

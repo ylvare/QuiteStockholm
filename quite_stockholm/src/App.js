@@ -10,35 +10,48 @@ class App extends Component {
 
   constructor(props){
    super(props)
-
     this.state = {
        placeList:[]
     }
 
   this.getPlaces = this.getPlaces.bind(this)
+  this.addPlaceTip = this.addPlaceTip.bind(this)
 }
 
 
   componentDidMount = async () => {
-  const that = this;
-  const refPlaces = Firebase.getPlacesRef()
-  refPlaces.onSnapshot(async function (querySnapshot) {
-         const placeList = await that.getPlaces()
-         that.setState({
-           placeList : placeList})
-        })
+  const placeList = await this.getPlaces()
+  this.setState({
+      placeList : placeList
+    })
   }
 
   async getPlaces(){
       return await Firebase.getPlacesList()
    }
 
+  addPlaceTip(place,file){
+    const that = this;
+    const firebase = Firebase.getFirebase()
+    Firebase.addPlaceTip(place)
+    const uploadTask = Firebase.addPhotoFile(file)
+    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+      function(snapshot) {
+      }, function(error) {
+     }, async function() {
+         const placeList = await that.getPlaces()
+            that.setState({
+             placeList : placeList
+           })
+        })
+    }
+
   render() {
     return (
       <div>
         <Header />
         <PlaceList placeList = {this.state.placeList}/>
-        <PlaceForm />
+        <PlaceForm addPlaceTip = {this.addPlaceTip}/>
       </div>
     );
   }

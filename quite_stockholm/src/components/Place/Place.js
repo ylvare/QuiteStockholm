@@ -27,15 +27,9 @@ class Place extends Component {
 
   render() {
     const divStyle = {
-          backgroundColor: '#E0F2F1',
-          height: "16.66rem",
-          width: "23rem",
           backgroundImage: `url(${this.state.imageRef}),url(${backgroundSvg})`,
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          marginBottom:"1rem"
-    }
+        }
+
     return (
       <div className="Place">
          <div className="image-container" style={divStyle}>

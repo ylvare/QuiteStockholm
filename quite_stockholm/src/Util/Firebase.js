@@ -1,7 +1,9 @@
-import firebase from 'firebase';
-/*import * as firebase from 'firebase/app';*/
+
+import firebase from 'firebase'
+import 'firebase/database'
 import 'firebase/firestore'
-import {fireBaseConfig} from '../constants/app_secrets'
+import 'firebase/storage'
+import {fireBaseConfig} from '../constants/constants'
 
 firebase.initializeApp({
   apiKey: fireBaseConfig.apiKey,
@@ -19,31 +21,35 @@ const storage = firebase.storage();
 const storageRef = storage.ref();
 
 const Firebase = {
-    getPlacesRef :  function (){
-     return db.collection("places")
-    }
-    ,
-    getPlacesList: async function(){
-    const placeList = []
-     return db.collection("places").get().then(async function(querySnapshot) {
-       querySnapshot.forEach(async function(doc) {
-           const data = doc.data()
-            const place = {
-             id: doc.id,
-             plats: data.Plats,
-             adress: data.Adress,
-             kategori: data.Kategori,
-             likes: data.Likes,
-             image: data.Foto
-           }
-           placeList.push(await place)
-        })
-        return placeList
+  getPlacesRef :  function (){
+   return db.collection("places")
+ },
+  getFirebase :  function (){
+      return firebase
+     }
+  ,
+  getPlacesList: async function(){
+  const placeList = []
+   return db.collection("places").get().then(async function(querySnapshot) {
+     querySnapshot.forEach(async function(doc) {
+         const data = doc.data()
+          const place = {
+           id: doc.id,
+           plats: data.Plats,
+           adress: data.Adress,
+           kategori: data.Kategori,
+           likes: data.Likes,
+           image: data.Foto
+         }
+         placeList.push(await place)
+      })
+      return placeList
     })
-
   },
   getPhotoReference: async function(photoName){
-    return await storageRef.child(`images/${photoName}`).getDownloadURL()
+    if (photoName !== "") {
+      return await storageRef.child(`images/${photoName}`).getDownloadURL()
+    }
   },
 
   addPlaceTip: function(placeTip){
@@ -56,6 +62,12 @@ const Firebase = {
     .catch(function(error) {
         console.error("Error adding document: ", error);
     });
+  },
+
+  addPhotoFile: function(file){
+    const metadata = {contentType: file.type }
+    const uploadTask = storageRef.child('images/' + file.name.toLowerCase()).put(file, metadata);
+    return uploadTask
   }
 }
 
