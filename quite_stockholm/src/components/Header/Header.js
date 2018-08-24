@@ -13,8 +13,8 @@ class Header extends Component {
           <h1 className ="desctop"> <span className="color1">Quite></span><span className="color2">Stockholm</span></h1>
         </div>
         <div className="navigation">
-            <nav>
-              <span>Tipsa</span>
+            <nav >
+              <a href="index.html#tip">Tipsa</a>
             </nav>
         </div>
       </header>
