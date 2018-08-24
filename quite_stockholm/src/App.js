@@ -5,6 +5,7 @@ import PlaceForm from './components/PlaceForm/PlaceForm'
 import './resources/CSS/GeneralStyles.css'
 import './App.css'
 import Firebase from './Util/Firebase'
+import ImageTools from './Util/ImageTools'
 
 class App extends Component {
 
@@ -34,8 +35,10 @@ class App extends Component {
       return await Firebase.getPlacesList()
    }
 
-  addPlaceTip(place,file){
-    const uploadTask = Firebase.addPhotoFile(file)
+  async addPlaceTip(place,file){
+    const imageTools = new ImageTools()
+    const size = {height: 500, width: 500}
+    const uploadTask = Firebase.addPhotoFile(await imageTools.resize(file,size), file.name)
     uploadTask.on('state_changed', function(snapshot){
         }, function(error) {
           // Handle unsuccessful uploads

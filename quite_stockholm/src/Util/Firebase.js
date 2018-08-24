@@ -64,9 +64,10 @@ const Firebase = {
     });
   },
 
-  addPhotoFile: function(file){
+  addPhotoFile: function(file, fileName){
+    console.log("in addPhotoFile")
     const metadata = {"contentType": file.type }
-    const uploadTask = storageRef.child('images/' + file.name.toLowerCase()).put(file, metadata);
+    const uploadTask = storageRef.child('images/' + fileName.toLowerCase()).put(file, metadata);
     return uploadTask
   }
 }

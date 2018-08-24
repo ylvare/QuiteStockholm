@@ -3,7 +3,6 @@ import '../../resources/CSS/GeneralStyles.css'
 import './Place.css';
 import Firebase from '../../Util/Firebase'
 import backgroundSvg from "../../resources/images/Q.svg"
-import ExifOrientationImg from 'react-exif-orientation-img'
 
 class Place extends Component {
 
@@ -27,23 +26,12 @@ class Place extends Component {
   }
 
   render() {
-    const photoCss = {
-      objectFit: "cover",
-      height: "22rem",
-      width: "22rem",
-      overflow:  "visible"
-      }
-
-    const backGroundImage = {
-          backgroundImage: `url(${backgroundSvg})`,
+    const divStyle = {
+           backgroundImage: `url(${this.state.imageRef}),url(${backgroundSvg})`,
       }
     return (
       <div className="Place">
-        <div className="image-container" style={backGroundImage}>
-          <ExifOrientationImg
-            src={this.state.imageRef}
-            style={photoCss}
-          />
+        <div className="image-container" style={divStyle}>
         </div>
         <div className="text-container">
           <div className="Place-address">
