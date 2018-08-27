@@ -36,7 +36,7 @@ class Place extends Component {
         <div className="text-container">
           <div className="Place-address">
             <h2>{this.props.place.plats}</h2>
-            <p>{this.props.place.kategori} | {this.props.place.adress} </p>
+            <p><span>{this.props.place.kategori}</span> | {this.props.place.adress}</p>
           </div>
           <div className="Place-reviews">
             <h3 className="rating"> <i className="fa fa-star"></i> {this.props.place.likes} </h3>
