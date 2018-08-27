@@ -19,7 +19,7 @@
       background-size: cover;
    }
 
-.Place .text-container {
+.text-container {
   padding-left: 0.4rem;
   padding-right: 0.4rem;
   padding-bottom: 0.6rem;
@@ -27,9 +27,9 @@
   justify-content: space-between;
 }
 
-.Place .text-container p {
+p {
   font-size: .88rem;
-  font-weight: 300;
+  font-weight: 500;
 }
 
 .Place h2 {
@@ -60,5 +60,4 @@
 }
 
 span {
-  color:#00BFA5;
 }
