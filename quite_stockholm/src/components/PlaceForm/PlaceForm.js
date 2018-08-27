@@ -70,7 +70,7 @@ class PlaceForm extends Component {
             <div className="Thanks" style={this.state.formatting.displayGreeting}><p> Tack för ditt bidrag <i className="fa fa-heart"></i>  </p></div>
             <div className="Border" style={this.state.formatting.displayForm}>
             <form onSubmit={this.handleSubmit} style={this.state.formatting.displayForm}>
-              <div>
+              <div className="Row">
                 <label>Kategori</label>
                 <select required name="Kategori" onChange={this.handleChange} value={this.state.placeTip.Kategori} style={this.state.formatting.grayedOut}>
                     <option value="choose" disabled>Välj kategori</option>
@@ -81,15 +81,15 @@ class PlaceForm extends Component {
                     <option value="Bada">Bada</option>
                 </select>
               </div>
-              <div>
+              <div className="Row">
                 <label>Namn</label>
                 <input type="text" id="plats" name="Plats" placeholder="Lugna Baren" onChange={this.handleChange} value={this.state.placeTip.Plats} />
               </div>
-              <div>
+              <div className="Row">
                 <label>Adress</label>
                 <input type="text" name="Adress" placeholder="Tystagatan 22" onChange={this.handleChange} value={this.state.placeTip.Adress}/>
               </div>
-              <div>
+              <div className="Row">
                 <label>Fotografi</label>
                 <input type="file" name="pic" accept="image/*" onChange={this.handleChangePhoto} />
               </div>

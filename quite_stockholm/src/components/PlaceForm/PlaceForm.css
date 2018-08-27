@@ -85,3 +85,23 @@ button:focus {
   border-radius: 0.3rem;
   outline: 2px solid rgba(55,71,79,0.5);
 }
+
+@media only screen and (max-width: 800px) {
+
+  .Row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+   .button {
+    padding-left: 40%;
+  }
+  .Border {
+     background-color: white;
+     width:90%;
+   }
+  input, select {
+    width: 50%;
+    flex-grow:1;
+  }
+}
