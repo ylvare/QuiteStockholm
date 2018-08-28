@@ -67,7 +67,7 @@ class PlaceForm extends Component {
   render() {
     return (
           <div className="PlaceForm" id="tip">
-            <div className="Thanks" style={this.state.formatting.displayGreeting}><p> Tack för ditt bidrag <i className="fa fa-heart"></i>  </p></div>
+            <div className="Thanks" style={this.state.formatting.displayGreeting}><span> Tack för ditt bidrag  <i className="fa fa-heart"></i>  </span></div>
             <div className="Border" style={this.state.formatting.displayForm}>
             <form onSubmit={this.handleSubmit} style={this.state.formatting.displayForm}>
               <div className="Row">

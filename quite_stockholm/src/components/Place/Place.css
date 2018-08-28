@@ -1,41 +1,44 @@
 .Place {
-  width: 22rem;
-  margin: 0 .5rem 2.3rem .5rem;
-  background-color:  #009688;
-  color: #004D40;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    width: 22rem;
+    margin: 0 .5rem 2.3rem .5rem;
+    background-color: #009688;
+    color: #004D40;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .image-container {
-      overflow:  hidden;
-      height: 16rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: #E0F2F1;
-      margin-bottom: 0.5rem;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
+    overflow:  hidden;
+    height: 16rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #E0F2F1;
+    margin-bottom: 0.5rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
    }
 
 .text-container {
-  padding-left: 0.4rem;
-  padding-right: 0.4rem;
-  padding-bottom: 0.6rem;
-  display: flex;
-  justify-content: space-between;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    padding-bottom: 0.6rem;
+    display: flex;
+    justify-content: space-between;
 }
 
 p {
+  padding-top:0.1rem;
   font-size: .88rem;
   font-weight: 500;
+  opacity: 0.9;
 }
 
-.Place h2 {
-  margin-bottom: .4rem;
-  font-size: 1.2rem;
+ h2 {
+  margin-bottom: .2rem;
+  font-size: 1.3rem;
   font-weight: 600;
+  opacity: 0.9;
 }
 
 .Place-address {
@@ -60,4 +63,26 @@ p {
 }
 
 span {
+}
+
+@media only screen and (max-width: 600px) {
+
+.Place {
+    width: 95%;
+    margin: 0 0 1rem 0;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    font-weight: 400;
+  }
+
+ h2 {
+   margin-bottom: 0rem;
+   font-size: 1rem;
+   font-weight: 500;
+ }
+
+ p {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
 }

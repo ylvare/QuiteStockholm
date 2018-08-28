@@ -8,11 +8,6 @@
   height: 45rem;
 }
 
- .Thanks {
-   color:white;
-   font-size: 4rem;
- }
-
  .Border {
   background-color: white;
   width:30rem;
@@ -86,12 +81,26 @@ button:focus {
   outline: 2px solid rgba(55,71,79,0.5);
 }
 
-@media only screen and (max-width: 800px) {
+.Thanks {
+  text-align: center;
+  color:white;
+  font-size: 4rem;
+  width: 95%;
+}
+
+
+@media only screen and (max-width: 600px) {
 
   form {
    padding: 3rem 1rem 1.5rem 1rem;
    width: 100%;
+   margin: 0.5rem;
+   border-radius: 0,5rem;
   }
+
+  .PlaceForm {
+    height: 35rem;
+ }
 
   label {
    display: inline-block;
@@ -122,12 +131,16 @@ button:focus {
   .Border {
      background-color: white;
      width:90%;
+     margin-top: 2rem;
+     margin-bottom: 5rem;
+     border-radius: 1.45rem;
    }
+
   input, select {
     width: 70%;
     flex-grow:1;
   }
   .Thanks {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 }
