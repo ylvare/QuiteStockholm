@@ -19,13 +19,13 @@ class App extends Component {
   this.addPlaceTip = this.addPlaceTip.bind(this)
 }
 
-
    componentDidMount = async () => {
 
     const that = this;
     const refPlaces = Firebase.getPlacesRef()
     refPlaces.onSnapshot(async function (querySnapshot) {
-           const placeList = await that.getPlaces()
+           let placeList = await that.getPlaces()
+           placeList = placeList.sort((a, b) => b.likes - a.likes).slice(0,10)
            that.setState({
              placeList : placeList})
            })
@@ -41,7 +41,6 @@ class App extends Component {
     const uploadTask = Firebase.addPhotoFile(await imageTools.resize(file,size), file.name)
     uploadTask.on('state_changed', function(snapshot){
         }, function(error) {
-          // Handle unsuccessful uploads
         }, async function() {
             Firebase.addPlaceTip(place)
      })

@@ -1,4 +1,3 @@
-
 import firebase from 'firebase'
 import 'firebase/database'
 import 'firebase/firestore'
@@ -62,6 +61,23 @@ const Firebase = {
     .catch(function(error) {
         console.error("Error adding document: ", error);
     });
+  },
+
+  updatePlaceTip: function(place){
+    // Add a new document in collection "cities"
+      db.collection("places").doc(place.Id).set({
+        Plats:place.Plats,
+        Adress:place.Adress,
+        Kategori:place.Kategori,
+        Likes:place.Likes,
+        Foto:place.Foto
+      })
+      .then(function() {
+          console.log("Document successfully written!");
+      })
+      .catch(function(error) {
+          console.error("Error writing document: ", error);
+      });
   },
 
   addPhotoFile: function(file, fileName){

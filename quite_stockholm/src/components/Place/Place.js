@@ -3,25 +3,26 @@ import '../../resources/CSS/GeneralStyles.css'
 import './Place.css';
 import Firebase from '../../Util/Firebase'
 import backgroundSvg from "../../resources/images/Q.svg"
-import Burst from './Burst/Burst'
+import mojs from 'mo-js';
 
 class Place extends Component {
 
   constructor(props){
    super(props)
-
-    this.state = {
-       imageRef:'',
-       isPlay: true
-    }
-    this._handleClick = this._handleClick.bind(this)
-    this.getImageRef = this.getImageRef.bind(this)
-    this._play = this._play.bind(this)
-    this._resetPlay = this._resetPlay.bind(this)
-}
-
-  _play() { this.setState({ isPlay: true }); }
-  _resetPlay() { this.setState({ isPlay: false }); }
+      this.state = {
+         imageRef:'',
+         place: {
+               Id: this.props.place.id,
+               Plats:this.props.place.plats,
+               Adress:this.props.place.adress,
+               Kategori:this.props.place.kategori,
+               Likes:this.props.place.likes,
+               Foto:this.props.place.image
+            }
+         }
+      this.handleClick = this.handleClick.bind(this)
+      this.getImageRef = this.getImageRef.bind(this)
+   }
 
   componentDidMount = async () => {
     const imageRef = await this.getImageRef(this.props.place.image)
@@ -30,11 +31,34 @@ class Place extends Component {
     }
 
    async getImageRef(){
-      return await Firebase.getPhotoReference(this.props.place.image)
+      return await Firebase.getPhotoReference(this.state.place.Foto)
   }
 
-  _handleClick(e){
-    this.refs.child.playAtMouseCursor(e)
+  handleClick(e){
+    let place = {...this.state.place}
+    place['Likes']++;
+    this._burst = new mojs.Burst({
+      left: 0,
+      top: 0,
+      count:    200,
+      radius:   {5: 25 },
+      opacity: {1:0},
+      children: {
+      shape: 'polygon',
+      radius:       3,
+      fill:  { 'gold' : 'yellow' },
+      duration:     2000
+      }
+    });
+    this._burst
+      .tune({ x: e.pageX, y: e.pageY })
+      .setSpeed(1)
+      .replay();
+
+    this.setState({
+      place : place})
+
+    Firebase.updatePlaceTip(place)
   }
 
   render() {
@@ -48,13 +72,12 @@ class Place extends Component {
         </div>
         <div className="text-container">
           <div className="Place-address">
-            <h2>{this.props.place.plats}</h2>
-            <p><span>{this.props.place.kategori}</span> | {this.props.place.adress}</p>
+            <h2>{this.state.place.Plats}</h2>
+            <p><span>{this.state.place.Kategori}</span> | {this.state.place.Adress}</p>
           </div>
           <div className="Place-reviews">
-            <span className="rating"> {this.props.place.likes} </span>
-            <button className="star" onClick={this._handleClick}> <i className="fa fa-star" id="clap--icon"></i> </button>
-            <Burst ref="child" isPlay={this.state.isPlay} onComplete={this._resetPlay}/>
+            <span className="rating"> {this.state.place.Likes} </span>
+            <button className="star" onClick={this.handleClick}> <i className="fa fa-star"></i> </button>
           </div>
        </div>
      </div>
