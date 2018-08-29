@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "firebase": "^5.4.0",
+    "mo-js": "^0.288.2",
     "p-iteration": "^1.1.7",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",

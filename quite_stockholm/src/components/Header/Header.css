@@ -9,6 +9,10 @@ header {
   background: linear-gradient(to bottom, white 50%, transparent 90%);
 }
 
+.category{
+  color:white;
+}
+
 .mobile {
   display: none;
 }

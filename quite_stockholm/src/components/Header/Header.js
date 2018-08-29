@@ -11,7 +11,7 @@ class Header extends Component {
           <h1 className="mobile"> <span className="color1">Q</span></h1>
         </div>
         <div className="navigation">
-          <a href=""> &lt; Fika &gt;</a>
+          <a href="" className="category"> &lt; Fika &gt;</a>
           <a href="index.html#tip"><span className="desctop">Tipsa</span><i className="mobile fas fa-volume-down"></i></a>
         </div>
       </header>
