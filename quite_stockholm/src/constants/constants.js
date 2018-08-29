@@ -11,7 +11,7 @@ export const placeTipClean = {
       Plats:'',
       Adress:'',
       Kategori:'choose',
-      Likes:'',
+      Likes:'1',
       Foto:''
 }
 
