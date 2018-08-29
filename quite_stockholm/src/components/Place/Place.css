@@ -63,8 +63,9 @@ p {
   color:gold;
   width:auto;
   border-style: none;
-  padding-left: 0.2rem;
-  padding-right: 0;
+  margin-left: 0.2rem;
+  margin-right: 0;
+  padding:0;
 }
 
 .star:hover,
