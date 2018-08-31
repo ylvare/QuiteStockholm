@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import '../../resources/CSS/GeneralStyles.css'
 import './PlaceForm.css'
 import {placeTipClean, formattingPlaceFormClean} from '../../constants/constants'
+import Popup from './Popup/Popup'
 
 class PlaceForm extends Component {
 
@@ -11,12 +12,14 @@ class PlaceForm extends Component {
     this.state = {
       placeTip: placeTipClean,
       selectedFile: null,
-      formatting: formattingPlaceFormClean
+      formatting: formattingPlaceFormClean,
+      showPopup: false
       }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleChangePhoto = this.handleChangePhoto.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.togglePopup = this.togglePopup.bind(this)
   }
 
 
@@ -24,17 +27,23 @@ class PlaceForm extends Component {
       window.scrollTo(0, document.body.scrollHeight);
   }
 
-  handleChange(e) {
-    let placeTip = {...this.state.placeTip}
-    placeTip[e.target.name] = e.target.value
-    let formatting = {...this.state.formatting}
-    formatting['grayedOut'] = {
-      color:"black"
-    }
+  togglePopup() {
     this.setState({
-    placeTip:placeTip,
-    formatting:formatting
+      showPopup: !this.state.showPopup
     });
+  }
+
+  handleChange(e) {
+      let placeTip = {...this.state.placeTip}
+      placeTip[e.target.name] = e.target.value
+      let formatting = {...this.state.formatting}
+      formatting['grayedOut'] = {
+        color:"black"
+      }
+      this.setState({
+      placeTip:placeTip,
+      formatting:formatting
+      });
   }
 
    handleChangePhoto(e){
@@ -48,25 +57,39 @@ class PlaceForm extends Component {
 
 
   handleSubmit(e) {
-    e.preventDefault()
-    this.props.addPlaceTip(this.state.placeTip, this.state.selectedFile)
-    let formatting =  { ...formattingPlaceFormClean}
-    formatting['displayForm'] = {
-       display:"none"
+    if(this.state.selectedFile!==null){
+      e.preventDefault()
+        this.props.addPlaceTip(this.state.placeTip, this.state.selectedFile)
+        let formatting =  { ...formattingPlaceFormClean}
+        formatting['displayForm'] = {
+           display:"none"
+        }
+        formatting['displayGreeting'] = {
+           display:"block",
+           paddingBottom: "30rem",
+           paddingTop: "10rem"
+        }
+        this.setState({
+          placeTip: placeTipClean,
+          formatting:formatting
+        });
+        setTimeout(this.scrollToBottom(), 1000);
+      }
+    else {
+      this.togglePopup()
     }
-    formatting['displayGreeting'] = {
-       display:"block"
-    }
-    this.setState({
-      placeTip: placeTipClean,
-      formatting:formatting
-    });
-    setTimeout(this.scrollToBottom(), 1000);
 }
 
   render() {
+
     return (
           <div className="PlaceForm" id="tip">
+           {this.state.showPopup ?
+              <Popup
+                text='Ett fotografi behövs till ditt tips'
+                closePopup={this.togglePopup}
+              />
+              : null}
             <div className="Thanks" style={this.state.formatting.displayGreeting}><span> Tack för ditt bidrag  <i className="fa fa-heart"></i>  </span></div>
             <div className="Border" style={this.state.formatting.displayForm}>
             <form onSubmit={this.handleSubmit} style={this.state.formatting.displayForm}>

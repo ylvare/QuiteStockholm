@@ -83,7 +83,8 @@ h1 {
 }
 
 .navigation {
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.3rem;
+  flex-direction: row;
   display: flex;
   justify-content: space-between;
   padding-right: 1rem;
@@ -107,8 +108,7 @@ h1 {
 
   .mobile {
     display: block;
-    font-size:1.5rem;
-    font-weight: 550;
+    font-size:2rem;
   }
 
   .logo {
@@ -118,9 +118,20 @@ h1 {
   }
 
   .navigation {
-    font-weight: 550;
-    padding-right: 0.5rem;
-    flex-grow: 1;
-    font-size: 1.5rem;
+    justify-content: flex-end;
+    flex-direction: row;
+    align-items: flex-end;
+    font-weight: 500;
+    vertical-align: bottom;
   }
+
+  #questionMark {
+    font-size:1rem;
+  }
+
+  a:hover::after,
+  a:focus::after {
+  	opacity: 0;
+  }
+
 }
