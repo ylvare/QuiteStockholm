@@ -40,9 +40,9 @@ class Place extends Component {
     this._burst = new mojs.Burst({
       left: 0,
       top: 0,
-      count:    200,
+      count:    60,
       radius:   {5: 25 },
-      opacity: {1:0},
+      opacity: {0.6:0},
       children: {
       shape: 'polygon',
       radius:       3,
