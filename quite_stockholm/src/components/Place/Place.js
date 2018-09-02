@@ -73,7 +73,7 @@ class Place extends Component {
         <div className="text-container">
           <div className="Place-address">
             <h2>{this.state.place.Plats}</h2>
-            <p><span>{this.state.place.Kategori}</span> | {this.state.place.Adress}</p>
+            <p>{this.state.place.Adress}</p>
           </div>
           <div className="Place-reviews">
             <span className="rating"> {this.state.place.Likes} </span>

@@ -14,28 +14,35 @@ class App extends Component {
    super(props)
     this.state = {
        placeList:[],
-       displayAbout: true
+       displayAbout: true,
+       category:"Fika"
     }
 
   this.getPlaces = this.getPlaces.bind(this)
   this.addPlaceTip = this.addPlaceTip.bind(this)
+  this.selectCategory = this.selectCategory.bind(this)
 }
 
    componentDidMount = async () => {
-
     const that = this;
     const refPlaces = Firebase.getPlacesRef()
     refPlaces.onSnapshot(async function (querySnapshot) {
-           let placeList = await that.getPlaces()
-           placeList = placeList.sort((a, b) => b.likes - a.likes)
-           that.setState({
-             placeList : placeList})
-           })
-    }
+      that.getPlaces(that.state.category)
+    })
+  }
 
-  async getPlaces(){
-      return await Firebase.getPlacesList()
+  async getPlaces(category){
+    let placeList = await Firebase.getPlacesList(category)
+    placeList = placeList.sort((a, b) => b.likes - a.likes)
+    this.setState({
+      placeList : placeList})
    }
+
+   selectCategory(category){
+     this.getPlaces(category)
+     this.setState({
+       category : category})
+    }
 
   async addPlaceTip(place,file){
     this.setState({
@@ -52,10 +59,9 @@ class App extends Component {
   }
 
   render() {
-
       return (
         <div>
-          <Header/>
+          <Header selectCategory={this.selectCategory}/>
           <PlaceList placeList = {this.state.placeList}/>
           <PlaceForm addPlaceTip = {this.addPlaceTip}/>
           <About />

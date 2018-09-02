@@ -27,9 +27,9 @@ const Firebase = {
       return firebase
      }
   ,
-  getPlacesList: async function(){
+  getPlacesList: async function(category){
   const placeList = []
-   return db.collection("places").get().then(async function(querySnapshot) {
+   return db.collection("places").where("Kategori", "==", category).get().then(async function(querySnapshot) {
      querySnapshot.forEach(async function(doc) {
          const data = doc.data()
           const place = {
@@ -64,7 +64,6 @@ const Firebase = {
   },
 
   updatePlaceTip: function(place){
-    // Add a new document in collection "cities"
       db.collection("places").doc(place.Id).set({
         Plats:place.Plats,
         Adress:place.Adress,

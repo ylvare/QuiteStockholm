@@ -55,6 +55,7 @@ class CategorySelect extends Component {
 
   onSelect = key => {
     this.setState({ selected: key });
+    this.props.selectCategory(key)
   }
 
 
