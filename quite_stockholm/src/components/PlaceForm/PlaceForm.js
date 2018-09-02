@@ -22,11 +22,6 @@ class PlaceForm extends Component {
     this.togglePopup = this.togglePopup.bind(this)
   }
 
-
-  scrollToBottom() {
-      window.scrollTo(0, document.body.scrollHeight);
-  }
-
   togglePopup() {
     this.setState({
       showPopup: !this.state.showPopup
@@ -57,7 +52,7 @@ class PlaceForm extends Component {
 
 
   handleSubmit(e) {
-    if(this.state.selectedFile!==null){
+    if(this.state.selectedFile!==null && this.state.placeTip.Plats!==''&& this.state.placeTip.Adress!==''&& this.state.placeTip.Kategori!=='choose'){
       e.preventDefault()
         this.props.addPlaceTip(this.state.placeTip, this.state.selectedFile)
         let formatting =  { ...formattingPlaceFormClean}
@@ -73,7 +68,6 @@ class PlaceForm extends Component {
           placeTip: placeTipClean,
           formatting:formatting
         });
-        setTimeout(this.scrollToBottom(), 1000);
       }
     else {
       this.togglePopup()
@@ -86,7 +80,7 @@ class PlaceForm extends Component {
           <div className="PlaceForm" id="tip">
            {this.state.showPopup ?
               <Popup
-                text='Ett fotografi behövs till ditt tips'
+                text='Försök igen'
                 closePopup={this.togglePopup}
               />
               : null}
@@ -117,7 +111,7 @@ class PlaceForm extends Component {
                 <input type="file" name="pic" accept="image/*" onChange={this.handleChangePhoto} />
               </div>
               <div className="button">
-                <button>Tipsa</button>
+                <a href="#tip" className="linkLikeButton" onClick={this.handleSubmit}>Tipsa</a>
               </div>
             </form>
            </div>
