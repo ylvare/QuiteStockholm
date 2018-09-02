@@ -1,10 +1,13 @@
 header {
   position: fixed;
   z-index: 20;
-  padding-top: 2rem;
+  padding-top: 1.5rem;
   padding-bottom: 4rem;
   top:0;
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
   width:100%;
   background: linear-gradient(to bottom, white 50%, transparent 90%);
 }
@@ -91,6 +94,7 @@ h1 {
   flex-direction: row;
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
   padding-right: 1rem;
 }
 
@@ -98,10 +102,9 @@ h1 {
 
   header {
     padding-top: 0.7rem;
-    padding-bottom: 3rem;
+    padding-bottom: 4rem;
     display: flex;
   }
-
   a {
     margin-left: 0rem;
   }
@@ -119,15 +122,18 @@ h1 {
     padding-left: 0.5rem;
     display: flex;
     justify-content: space-between;
+    flex-grow: 0;
+    font-weight: 550;
   }
 
   .navigation {
     padding-right: 0.5rem;
     justify-content: flex-end;
     flex-direction: row;
-    align-items: flex-end;
+    justify-content: center;
     font-weight: 500;
     vertical-align: bottom;
+    flex-grow: 1;
   }
 
   .navigation i{
@@ -143,4 +149,10 @@ h1 {
   	opacity: 0;
   }
 
+  .category-select{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
 }

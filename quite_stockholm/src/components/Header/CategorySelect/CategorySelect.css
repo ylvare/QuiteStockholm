@@ -1,0 +1,28 @@
+
+.CategorySelect{
+  width:12rem;
+  color:#757575;
+}
+
+.menu-item {
+  padding: 0 10px;
+  margin: 0px 0px;
+  cursor: pointer;
+  user-select: none;
+  border:none;
+}
+
+
+.menu-item-wrapper.active {
+  background-color: #F5F5F5;
+}
+
+.menu-item.active {
+  background-color: grey;
+}
+
+.scroll-menu-arrow {
+  padding: 10px;
+  color:#00796B;
+  cursor: pointer;
+}
